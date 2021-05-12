@@ -4,6 +4,7 @@ import fire from "./firebase/config.js";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Home from "./components/Home/Home.js";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 
 const App = () => {
@@ -86,22 +87,30 @@ const App = () => {
   }, [])
 
   return (
-    <Container className="vh-100">
-      {user ? (<Home />) : (
-        <Login
-          eamil={email}
-          setEmail={setEmail}
-          password={password}
-          setPassword={setPassword}
-          handleLogin={handleLogin}
-          handleSignup={handleSignup}
-          hasAccount={hasAccount}
-          setHasAccount={setHasAccount}
-          emailError={emailError}
-          passwordError={passwordError}
-        />
-      )}
-    </Container>
+    <Router>
+      <Container className="vh-100">
+        <Switch>
+          <Route exact path="/login">
+            <Login
+              eamil={email}
+              setEmail={setEmail}
+              password={password}
+              setPassword={setPassword}
+              handleLogin={handleLogin}
+              handleSignup={handleSignup}
+              hasAccount={hasAccount}
+              setHasAccount={setHasAccount}
+              emailError={emailError}
+              passwordError={passwordError}
+            />
+          </Route>
+          <Route exact path="/signup">
+            <Signup />
+          </Route>
+          <Route path="/" component={Home} />
+        </Switch>
+      </Container>
+    </Router>
   );
 }
 
