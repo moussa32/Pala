@@ -3,6 +3,7 @@ import { Container } from 'react-bootstrap';
 import fire from "./firebase/config.js";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import Home from "./components/Home/Home.js";
 
 
 const App = () => {
@@ -86,7 +87,20 @@ const App = () => {
 
   return (
     <Container className="vh-100">
-      <Signup />
+      {user ? (<Home />) : (
+        <Login
+          eamil={email}
+          setEmail={setEmail}
+          password={password}
+          setPassword={setPassword}
+          handleLogin={handleLogin}
+          handleSignup={handleSignup}
+          hasAccount={hasAccount}
+          setHasAccount={setHasAccount}
+          emailError={emailError}
+          passwordError={passwordError}
+        />
+      )}
     </Container>
   );
 }
