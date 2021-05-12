@@ -21,11 +21,8 @@ const Signup = () => {
             <Form.Label>Password</Form.Label>
             <Form.Control type="password" placeholder="Password" />
           </Form.Group>
-          <Form.Group controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label="Remember Me" />
-          </Form.Group>
           <Button className="w-100" variant="primary" type="submit">
-            Login
+            Signup
   </Button>
         </Form>
       </Col>
